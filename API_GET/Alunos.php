@@ -9,9 +9,9 @@ if (!$con) {
     die("Falha na conexão com o banco de dados: " . mysqli_connect_error());
 }
 
-$teste = array();
+$Alunoarray = array();
 
-$sql = "SELECT * FROM livro"; // Correção: "Select From * livro" deve ser "SELECT * FROM livro"
+$sql = "SELECT * FROM aluno";
 
 $result = mysqli_query($con, $sql);
 
@@ -20,23 +20,21 @@ if (!$result) {
 }
 
 while ($dados = mysqli_fetch_array($result)) {
-    $livro = $dados['Nome_livro']; // Correção: 'livro' deve ser '$livro'
-    $autor = $dados['Autor'];
-    $editora = $dados['Editora'];
-    $datai = $dados['data_inativacao'];
-    $motivo = $dados['motivo'];
-    $status = $dados['Status'];
+    $aluno = $dados['nome_aluno'];
+    $email_aluno = $dados['email_aluno'];
+    $telefone = $dados['num_telefone'];
+    $matricula = $dados['matricula'];
+    $status = $dados['status_aluno'];
     
-    $teste[] = array(
-        'livro' => $livro,
-        'Autor' => $autor,
-        'Editora' => $editora,
-        'data_inativacao'=>$datai,
-        'Motivo' => $motivo,
-        'Status' => $status
+    $Alunoarray[] = array(
+        'nome_aluno' => $aluno,
+        'email_aluno' => $email_aluno,
+        'num_telefone' => $telefone,
+        'matricula'=>$matricula,
+        'status_aluno' => $status
     );
 }
-echo json_encode($teste);
+echo json_encode($Alunoarray);
     
 
 // Feche a conexão com o banco de dados

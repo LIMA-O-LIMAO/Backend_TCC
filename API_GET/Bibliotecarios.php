@@ -25,7 +25,7 @@ while ($dados = mysqli_fetch_array($result)) {
         'nome_bibi' => $bibliotecario,
         'CPF' => $CPF,
         'email' => $email,
-        'Status_biblitecario' => $status,
+        'Status_bibliotecario' => $status,
     
     );
 }
