@@ -20,9 +20,12 @@ if (!$data) {
   exit();
 }
 
-$nome = $data->Nome_aluno;
+$nome = $data->Bibliotecario;
+$senha = $data->Senha;
+$email = $data->Email;
+$cpf = $data->CPF;
 
-$sql = "INSERT INTO aluno (nome_aluno, num_telefone, email_aluno, status_aluno,matricula) VALUES ('$nome',231231321,'teste','ativo',0909009211)";
+$sql = "INSERT INTO bibliotecario (nome_bibi, senha_bibi,email, CPF,Status_bibliotecario) VALUES ('$nome','$senha','$email','$cpf','Ativo')";
 
 
 if (mysqli_query($con, $sql)) {
