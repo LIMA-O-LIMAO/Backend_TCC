@@ -24,7 +24,7 @@ $nome = $data->Usuario;
 $senha = $data->Senhas;
 
 
-$sql = "SELECT * FROM bibliotecarios WHERE nome_bibi = '$nome'";
+$sql = "SELECT * FROM bibliotecario WHERE nome_bibi = '$nome' and senha_bibi='$senha'";
 
 $result = mysqli_query($con, $sql);
 
@@ -35,11 +35,8 @@ if (!$result) {
 }
 
 
-if (mysqli_num_rows($result) === 1) {
-  $row = mysqli_fetch_assoc($result);
-  $hashedSenha = $row['senha_bibi'];
 
-  if (password_verify($senha, $hashedSenha)) {
+  if (mysqli_num_rows($result) === 1) {
 
     http_response_code(200);
     echo json_encode(['message' => 'Login bem-sucedido']);
@@ -48,9 +45,5 @@ if (mysqli_num_rows($result) === 1) {
     http_response_code(401);
     echo json_encode(['message' => 'Senha incorreta']);
   }
-} else {
 
-  http_response_code(404);
-  echo json_encode(['message' => 'Usuário não encontrado']);
-}
 ?>
